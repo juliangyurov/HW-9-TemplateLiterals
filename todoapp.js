@@ -1,6 +1,7 @@
 //unprotected
 // stage = 0 - firstform, 1 - signupform, 2 - loginform, 3 - dashboard, 4 - todolist, 5 - account settings
 let stage = 0;
+let stageName = ["0 - firstform", "1 - signupform", "2 - loginform", "3 - dashboard", "4 - todolist", "5 - account settings"];
 
 function changeStage()  {
     switch(stage){
@@ -60,12 +61,75 @@ function changeStage()  {
             toDoForm.style.display="none";  
             accSettingsForm.style.display="none";      
     }
-    console.log("stage=" + stage);
+    console.log("stage = " + stageName[stage]);
+}
+
+createHtml(stage);
+
+function createHtml(stage){
+    // create body elements
+    var headingHtml = (`
+    <h1>TO-DO LIST MAGUS</h1>
+    <h2>list of things that need to get done</h2>
+
+    <p class="p-hidden"></p>
+
+    <section>&nbsp;</section>
+    `);
+
+    var mainHtml ="";
+    if(stage === 0){
+        mainHtml = (`
+            <div id="first-form" style="display: block;" >
+                <div>
+                    <button id="signup" type="button" class="button">Sign Up</button>
+                </div>
+                <div>
+                    <button id="login" type="button2" class="button">Log In</button>
+                </div>
+            </div>
+       `) ;
+    }else if(stage === 1){
+        mainHtml = (`
+            <div id="signup-form" style="display: block;">
+                <form >
+                    <h2 id="headerSignUp">Please complete all information below:</h2>
+                    <br>
+
+                    <label for="fname">First name:</label><br>              
+                    <input type="text" id="fname" name="fname" size="30"><br><br>
+            
+                    <label for="lname">Last name:</label><br>
+                    <input type="text" id="lname" name="lname" size="30"><br><br>
+            
+                    <label for="email">Email:</label><br>                              
+                    <input type="text" id="email" name="email" size="30"><br><br>
+            
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" size="30"><br><br>
+
+                    <input type="checkbox" id="agreement" name="agreement" value="ok">
+                    <label for="agreement" style="font-size: small;"> I agree to the Terms of Use</label><br><br>
+            
+                    <div>
+                        <button id="signupform" type="button" class="button">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        
+        `);
+    }
+    
+
+    console.log(heading);
+    document.getElementById("heading").innerHTML = headingHtml + mainHtml;
+ 
 }
 
 function signUpClicked(){
-        stage = 1;
-        changeStage();
+        stage = 1;  //  1 - signupform
+        createHtml(stage);
+        //changeStage();
 }
     
 function logInClicked(){
@@ -74,12 +138,12 @@ function logInClicked(){
     loginheader.style.color = "white";
     document.getElementById("email1").value="";
     document.getElementById("password1").value="";
-    stage = 2;
+    stage = 2;  //  2 - loginform
     changeStage();
 }
 
 function backFromLoginClicked(){
-    stage = 0;
+    stage = 0;  //  0 - firstform
     changeStage();    
 }
 
