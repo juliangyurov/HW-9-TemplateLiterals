@@ -78,7 +78,7 @@ function createHtml(stage){
     `);
 
     var mainHtml ="";
-    if(stage === 0){
+    if(stage === 0){    // 0 - firstform
         mainHtml = (`
             <div id="first-form" style="display: block;" >
                 <div>
@@ -88,8 +88,8 @@ function createHtml(stage){
                     <button id="login" type="button2" class="button">Log In</button>
                 </div>
             </div>
-       `) ;
-    }else if(stage === 1){
+        `) ;
+    }else if(stage === 1){  // 1 - signupform
         mainHtml = (`
             <div id="signup-form" style="display: block;">
                 <form >
@@ -118,11 +118,47 @@ function createHtml(stage){
             </div>
         
         `);
+    }else if(stage ===2){   // 2 - loginform
+        mainHtml = (`
+            <div id="login-form" style="display: block;">
+                <form >
+                    <h2 id="headerLogin" >Please complete all information below:</h2>
+                    <br>
+                    
+                    <label for="email1">Email:</label><br>                              
+                    <input type="text" id="email1" name="email1" size="30"><br><br>
+                    
+                    <label for="password1">Password:</label><br>
+                    <input type="password" id="password1" name="password1" size="30"><br><br>
+                    
+                    <div>
+                        <button id="loginform" type="button" class="button">Log In</button>
+                    </div>
+                    <div>
+                        <button id="backfromlogin" type="button" class="button">Back</button>
+                    </div>
+                </form>
+            </div>
+        `);
     }
-    
 
-    console.log(heading);
     document.getElementById("heading").innerHTML = headingHtml + mainHtml;
+    console.log(heading + mainHtml);
+
+    if(stage === 0){
+        let buttonSignUp = document.getElementById("signup");
+        let buttonLogIn = document.getElementById("login");
+        buttonSignUp.addEventListener("click",signUpClicked);
+        buttonLogIn.addEventListener("click",logInClicked);
+    }else if(stage ===1){
+        let buttonSignUpForm = document.getElementById("signupform");
+        buttonSignUpForm.addEventListener("click",signUpFormClicked);
+    }else if(stage === 2){
+        let buttonLogInForm = document.getElementById("loginform");
+        let buttonBackFromLogin = document.getElementById("backfromlogin");
+        buttonLogInForm.addEventListener("click",logInFormClicked);
+        buttonBackFromLogin.addEventListener("click",backFromLoginClicked);
+    }
  
 }
 
@@ -778,10 +814,10 @@ let toDoForm = document.getElementById("todo-form" );
 let accSettingsForm = document.getElementById("account-settings-form" );
 
 // button and other elements
-let buttonSignUp = document.getElementById("signup");
-let buttonLogIn = document.getElementById("login");
-let buttonSignUpForm = document.getElementById("signupform");
-let buttonLogInForm = document.getElementById("loginform");
+//let buttonSignUp = document.getElementById("signup");
+//let buttonLogIn = document.getElementById("login");
+// let buttonSignUpForm = document.getElementById("signupform");
+// let buttonLogInForm = document.getElementById("loginform");
 let buttonAccSettings = document.getElementById("accSettingsBtn");
 let buttonLogOut = document.getElementById("logOutBtn");
 let buttonAccSettingsSave = document.getElementById("accsettingssave");
@@ -790,13 +826,13 @@ let buttonNewTodoList = document.getElementById("newtodolist");
 let buttonNewListItem = document.getElementById("newlistitem");
 let buttonBackOrSaveList = document.getElementById("backsavelist");
 let editableListName = document.getElementById("h3-listname");
-let buttonBackFromLogin = document.getElementById("backfromlogin");
+// let buttonBackFromLogin = document.getElementById("backfromlogin");
 
 // add event listeners
-buttonSignUp.addEventListener("click",signUpClicked);
-buttonLogIn.addEventListener("click",logInClicked);
-buttonSignUpForm.addEventListener("click",signUpFormClicked);
-buttonLogInForm.addEventListener("click",logInFormClicked);
+// buttonSignUp.addEventListener("click",signUpClicked);
+// buttonLogIn.addEventListener("click",logInClicked);
+// buttonSignUpForm.addEventListener("click",signUpFormClicked);
+// buttonLogInForm.addEventListener("click",logInFormClicked);
 //buttonAccSettings.addEventListener("click",changeAccSettings);
 document.querySelectorAll(".accSettingsBtn").forEach(item => {
   item.addEventListener("click", changeAccSettings)
@@ -813,7 +849,7 @@ buttonNewListItem.addEventListener("click",newListItem);
 buttonBackOrSaveList.addEventListener("click",backOrSaveTodoList);
 toDoForm.addEventListener("click",toggleLiChecked,false);
 editableListName.addEventListener("click",editTodoListName);
-buttonBackFromLogin.addEventListener("click",backFromLoginClicked);
+// buttonBackFromLogin.addEventListener("click",backFromLoginClicked);
 
 // logged user data
 let lufname,lulname,luemail,lupassword;
