@@ -3,66 +3,66 @@
 let stage = 0;
 let stageName = ["0 - firstform", "1 - signupform", "2 - loginform", "3 - dashboard", "4 - todolist", "5 - account settings"];
 
-function changeStage()  {
-    switch(stage){
-        case 0:
-            firstForm.style.display="block";
-            signUpForm.style.display="none";
-            logInForm.style.display="none";
-            dashboardForm.style.display="none";
-            toDoForm.style.display="none";
-            accSettingsForm.style.display="none";
-            break;
-        case 1:
-            firstForm.style.display="none";
-            signUpForm.style.display="block";
-            logInForm.style.display="none";
-            dashboardForm.style.display="none";
-            toDoForm.style.display="none";
-            accSettingsForm.style.display="none";
-            break;
-        case 2:
-            firstForm.style.display="none";
-            signUpForm.style.display="none";
-            logInForm.style.display="block";
-            dashboardForm.style.display="none";
-            toDoForm.style.display="none";
-            accSettingsForm.style.display="none";
-            break;            
-        case 3:
-            firstForm.style.display="none";
-            signUpForm.style.display="none";
-            logInForm.style.display="none";
-            dashboardForm.style.display="block";
-            toDoForm.style.display="none";
-            accSettingsForm.style.display="none";
-            break;
-        case 4:
-            firstForm.style.display="none";
-            signUpForm.style.display="none";
-            logInForm.style.display="none";
-            dashboardForm.style.display="none";
-            toDoForm.style.display="block";
-            accSettingsForm.style.display="none";
-            break; 
-        case 5:
-                firstForm.style.display="none";
-                signUpForm.style.display="none";
-                logInForm.style.display="none";
-                dashboardForm.style.display="none";
-                toDoForm.style.display="none";
-                accSettingsForm.style.display="block";
-                break;                                 
-        default:
-            firstForm.style.display="block";
-            signUpForm.style.display="none";
-            logInForm.style.display="none";
-            dashboardForm.style.display="none";
-            toDoForm.style.display="none";  
-            accSettingsForm.style.display="none";      
-    }
-    console.log("stage = " + stageName[stage]);
-}
+// function changeStage()  {
+//     switch(stage){
+//         case 0:
+//             firstForm.style.display="block";
+//             signUpForm.style.display="none";
+//             logInForm.style.display="none";
+//             dashboardForm.style.display="none";
+//             toDoForm.style.display="none";
+//             accSettingsForm.style.display="none";
+//             break;
+//         case 1:
+//             firstForm.style.display="none";
+//             signUpForm.style.display="block";
+//             logInForm.style.display="none";
+//             dashboardForm.style.display="none";
+//             toDoForm.style.display="none";
+//             accSettingsForm.style.display="none";
+//             break;
+//         case 2:
+//             firstForm.style.display="none";
+//             signUpForm.style.display="none";
+//             logInForm.style.display="block";
+//             dashboardForm.style.display="none";
+//             toDoForm.style.display="none";
+//             accSettingsForm.style.display="none";
+//             break;            
+//         case 3:
+//             firstForm.style.display="none";
+//             signUpForm.style.display="none";
+//             logInForm.style.display="none";
+//             dashboardForm.style.display="block";
+//             toDoForm.style.display="none";
+//             accSettingsForm.style.display="none";
+//             break;
+//         case 4:
+//             firstForm.style.display="none";
+//             signUpForm.style.display="none";
+//             logInForm.style.display="none";
+//             dashboardForm.style.display="none";
+//             toDoForm.style.display="block";
+//             accSettingsForm.style.display="none";
+//             break; 
+//         case 5:
+//                 firstForm.style.display="none";
+//                 signUpForm.style.display="none";
+//                 logInForm.style.display="none";
+//                 dashboardForm.style.display="none";
+//                 toDoForm.style.display="none";
+//                 accSettingsForm.style.display="block";
+//                 break;                                 
+//         default:
+//             firstForm.style.display="block";
+//             signUpForm.style.display="none";
+//             logInForm.style.display="none";
+//             dashboardForm.style.display="none";
+//             toDoForm.style.display="none";  
+//             accSettingsForm.style.display="none";      
+//     }
+//     console.log("stage = " + stageName[stage]);
+// }
 
 createHtml(stage);
 
@@ -140,6 +140,86 @@ function createHtml(stage){
                 </form>
             </div>
         `);
+    }else if(stage === 3){  //  3 - dashboard
+        mainHtml = (`
+            <div id="dashboard-form" style="display: none;">
+                <form >
+                    <h2>DASHBOARD - Please choose existing or create new to-do list below:</h2>
+                    <br>
+
+                        <div id="myDIV" class="header-dash">
+                            <h3 style="margin:5px">My To Do Lists</h3>
+                            <input class="input-dash" type="text" id="newListNameInput" placeholder="Enter new list name ...">
+                            <span id="newtodolist" class="addBtn">Add</span>
+                            <span id="accSettingsBtn" class="accSettingsBtn">Account Settings</span>
+                            <span id="logOutBtn" class="logOutBtn">Log Out</span>
+                        </div><br>
+
+                        <ul id="todolistsul">
+                        </ul>
+
+                    <br><br>
+                    
+                </form>
+
+            </div>           
+        `);
+    }else if(stage === 4){  //  4 - todolist
+        mainHtml = (`
+            <div id="todo-form" style="display: none;">
+                <form >
+                    <h2>TO-DO List:</h2>
+                    <br>
+
+                        <div id="todoDIV" class="header-dash">
+                            <h3 id="h3-listname" style="margin:5px">My To Do List Name Here</h3>
+                            <input class="input-dash" type="text" id="newListItemInput" placeholder="Enter new list item ...">
+                            <span id="newlistitem" class="addBtn">Add</span>
+                            <span id="accSettingsBtn" class="accSettingsBtn">Account Settings</span>
+                            <span id="logOutBtn" class="logOutBtn">Log Out</span>
+                        </div><br>
+
+                        <ul id="todolistul">
+                        </ul>
+                    <br>
+                    <div>
+                        <button id="backsavelist" type="button" class="button">Back</button>
+                    </div>
+                </form>
+
+            </div>        
+        `);
+
+    }else{  //  5 - account settings
+        mainHtml = (`
+            <div id="account-settings-form" style="display: none;">
+                <form >
+                    <h2 id="headerAccSettings">Account Settings:</h2>
+                    <br>
+
+                    <label for="asfname">First name:</label><br>              
+                    <input type="text" id="asfname" name="fname" size="30"><br><br>
+                    
+                    <label for="aslname">Last name:</label><br>
+                    <input type="text" id="aslname" name="lname" size="30"><br><br>
+                    
+                    <label for="asemail">Email:</label><br>                              
+                    <input type="text" id="asemail" name="email" size="30"><br><br>
+                    
+                    <label for="aspassword">Password:</label><br>
+                    <input type="password" id="aspassword" name="password" size="30"><br><br>
+                    
+                    <label for="asrepassword">ReEnter Password:</label><br>
+                    <input type="password" id="asrepassword" name="password" size="30"><br><br>               
+                    
+                    <div>
+                        <button id="accsettingssave" type="button" class="button">Save</button>
+                        <button id="accsettingscancel" type="button" class="button">Cancel</button>
+                    </div>
+
+                </form>
+            </div>        
+        `);
     }
 
     document.getElementById("heading").innerHTML = headingHtml + mainHtml;
@@ -158,29 +238,55 @@ function createHtml(stage){
         let buttonBackFromLogin = document.getElementById("backfromlogin");
         buttonLogInForm.addEventListener("click",logInFormClicked);
         buttonBackFromLogin.addEventListener("click",backFromLoginClicked);
+    }else if(stage === 3){
+        let buttonNewTodoList = document.getElementById("newtodolist");
+        let buttonAccSettings = document.getElementById("accSettingsBtn");
+        let buttonLogOut = document.getElementById("logOutBtn");
+        buttonNewTodoList.addEventListener("click",newToDoList);
+        buttonAccSettings.addEventListener("click", changeAccSettings)
+        buttonLogOut.addEventListener("click", logOut);
+    }else if(stage === 4){
+        let toDoForm = document.getElementById("todo-form" );
+        let editableListName = document.getElementById("h3-listname");
+        let buttonNewListItem = document.getElementById("newlistitem");
+        let buttonAccSettings = document.getElementById("accSettingsBtn");
+        let buttonLogOut = document.getElementById("logOutBtn");
+        let buttonBackOrSaveList = document.getElementById("backsavelist");
+        toDoForm.addEventListener("click",toggleLiChecked,false);  
+        editableListName.addEventListener("click",editTodoListName);      
+        buttonNewListItem.addEventListener("click",newListItem);
+        buttonAccSettings.addEventListener("click", changeAccSettings);
+        buttonLogOut.addEventListener("click", logOut);  
+        buttonBackOrSaveList.addEventListener("click",backOrSaveTodoList);      
+    }else{
+        let buttonAccSettingsSave = document.getElementById("accsettingssave");
+        let buttonAccSettingsCancel = document.getElementById("accsettingscancel");
+        buttonAccSettingsSave.addEventListener("click",AccSettingsSave);
+        buttonAccSettingsCancel.addEventListener("click",AccSettingsCancel);
     }
- 
 }
 
 function signUpClicked(){
         stage = 1;  //  1 - signupform
         createHtml(stage);
-        //changeStage();
+        console.log("stage = " + stageName[stage]);
 }
     
 function logInClicked(){
+    stage = 2;  //  2 - loginform
+    createHtml(stage);
     const loginheader = document.getElementById("headerLogin");
     loginheader.innerText = "Please complete all information below:";
     loginheader.style.color = "white";
     document.getElementById("email1").value="";
     document.getElementById("password1").value="";
-    stage = 2;  //  2 - loginform
-    changeStage();
+    console.log("stage = " + stageName[stage]);
 }
 
 function backFromLoginClicked(){
     stage = 0;  //  0 - firstform
-    changeStage();    
+    createHtml(stage);
+    console.log("stage = " + stageName[stage]);    
 }
 
 function validEmail(email){
@@ -203,6 +309,7 @@ function hash(str) {
 }
 
 function signUpFormClicked(){
+ 
     // 1-check sign up data 2-record data 3-go to dashboard form
     const checkBox = document.getElementById("agreement");
     const header = document.getElementById("headerSignUp");
@@ -266,9 +373,9 @@ function signUpFormClicked(){
 
     // go to dashboard - todo lists
     stage = 3;
+    console.log("stage = " + stageName[stage]);
+    createHtml(stage);
     displayTodoLists("todolistsul");
-    changeStage();
-   
 }
     
 function logInFormClicked(){
@@ -277,8 +384,7 @@ function logInFormClicked(){
     const email1 = document.getElementById("email1");
     const password1 = document.getElementById("password1");
     const header1 = document.getElementById("headerLogin");
-    
-
+ 
     let errCnt = 0;
     let semicolon = "";
 
@@ -327,8 +433,9 @@ function logInFormClicked(){
     console.log(lutodolists);
     
     stage = 3;
+    console.log("stage = " + stageName[stage]);
+    createHtml(stage);
     displayTodoLists("todolistsul");
-    changeStage();
 }
 
 
@@ -499,8 +606,10 @@ function displayTodoList(){
     changeTodoFormButton(backsavelist);
     
     document.getElementById("h3-listname").innerText=this.id;
+
     stage = 4;
-    changeStage();
+    console.log("stage = " + stageName[stage]);
+    createHtml(stage);
 }
 
 // not used in the moment
@@ -569,7 +678,8 @@ function newToDoList() {
   document.getElementById("todolistul").innerHTML = "";
 
   stage = 4;
-  changeStage();
+  console.log("stage = " + stageName[stage]);
+  createHtml(stage);
 }
 
 // Create a new list item when clicking on the "Add" button from ToDo-Form
@@ -618,7 +728,8 @@ function newListItem() {
 
 function logOut(){
     stage = 0;
-    changeStage();
+    console.log("stage = " + stageName[stage]);
+    createHtml(stage);
 }
 
 function changeAccSettings(){
@@ -634,7 +745,8 @@ function changeAccSettings(){
     aspassword.value="012345678912";        //dummy password
     asrepassword.value="012345678921"; 
     stage = 5;
-    changeStage();     
+    console.log("stage = " + stageName[stage]);
+    createHtml(stage);     
 }
 
 function AccSettingsSave(){
@@ -682,15 +794,17 @@ function AccSettingsSave(){
     lupassword = hashpass1;
         
     stage = 3;
+    console.log("stage = " + stageName[stage]);
+    createHtml(stage);
     displayTodoLists("todolistsul");
-    changeStage();
 }
 
 function AccSettingsCancel(){
  
     stage = 3;
+    console.log("stage = " + stageName[stage]);
+    createHtml(stage);   
     displayTodoLists("todolistsul");
-    changeStage();    
 }
 
 function getUserList(listname){
@@ -730,8 +844,9 @@ function backOrSaveTodoList(){
     }
 
     stage = 3;
+    console.log("stage = " + stageName[stage]);
+    createHtml(stage);   
     displayTodoLists("todolistsul");
-    changeStage();      
 }
 
 function changeTodoFormButton(backorsave){
@@ -810,7 +925,7 @@ let firstForm = document.getElementById("first-form" );
 let signUpForm = document.getElementById("signup-form" );
 let logInForm = document.getElementById("login-form" );
 let dashboardForm = document.getElementById("dashboard-form" );
-let toDoForm = document.getElementById("todo-form" );
+// let toDoForm = document.getElementById("todo-form" );
 let accSettingsForm = document.getElementById("account-settings-form" );
 
 // button and other elements
@@ -818,14 +933,14 @@ let accSettingsForm = document.getElementById("account-settings-form" );
 //let buttonLogIn = document.getElementById("login");
 // let buttonSignUpForm = document.getElementById("signupform");
 // let buttonLogInForm = document.getElementById("loginform");
-let buttonAccSettings = document.getElementById("accSettingsBtn");
-let buttonLogOut = document.getElementById("logOutBtn");
-let buttonAccSettingsSave = document.getElementById("accsettingssave");
-let buttonAccSettingsCancel = document.getElementById("accsettingscancel");
-let buttonNewTodoList = document.getElementById("newtodolist");
-let buttonNewListItem = document.getElementById("newlistitem");
-let buttonBackOrSaveList = document.getElementById("backsavelist");
-let editableListName = document.getElementById("h3-listname");
+// let buttonAccSettings = document.getElementById("accSettingsBtn");
+// let buttonLogOut = document.getElementById("logOutBtn");
+// let buttonAccSettingsSave = document.getElementById("accsettingssave");
+// let buttonAccSettingsCancel = document.getElementById("accsettingscancel");
+// let buttonNewTodoList = document.getElementById("newtodolist");
+// let buttonNewListItem = document.getElementById("newlistitem");
+// let buttonBackOrSaveList = document.getElementById("backsavelist");
+// let editableListName = document.getElementById("h3-listname");
 // let buttonBackFromLogin = document.getElementById("backfromlogin");
 
 // add event listeners
@@ -834,21 +949,21 @@ let editableListName = document.getElementById("h3-listname");
 // buttonSignUpForm.addEventListener("click",signUpFormClicked);
 // buttonLogInForm.addEventListener("click",logInFormClicked);
 //buttonAccSettings.addEventListener("click",changeAccSettings);
-document.querySelectorAll(".accSettingsBtn").forEach(item => {
-  item.addEventListener("click", changeAccSettings)
-});
-//buttonLogOut.addEventListener("click",logOut);
-document.querySelectorAll(".logOutBtn").forEach(item => {
-  item.addEventListener("click", logOut)
-});
+// document.querySelectorAll(".accSettingsBtn").forEach(item => {
+//   item.addEventListener("click", changeAccSettings)
+// });
+// //buttonLogOut.addEventListener("click",logOut);
+// document.querySelectorAll(".logOutBtn").forEach(item => {
+//   item.addEventListener("click", logOut)
+// });
 
-buttonAccSettingsSave.addEventListener("click",AccSettingsSave);
-buttonAccSettingsCancel.addEventListener("click",AccSettingsCancel);
-buttonNewTodoList.addEventListener("click",newToDoList);
-buttonNewListItem.addEventListener("click",newListItem);
-buttonBackOrSaveList.addEventListener("click",backOrSaveTodoList);
-toDoForm.addEventListener("click",toggleLiChecked,false);
-editableListName.addEventListener("click",editTodoListName);
+// buttonAccSettingsSave.addEventListener("click",AccSettingsSave);
+// buttonAccSettingsCancel.addEventListener("click",AccSettingsCancel);
+// buttonNewTodoList.addEventListener("click",newToDoList);
+// buttonNewListItem.addEventListener("click",newListItem);
+// buttonBackOrSaveList.addEventListener("click",backOrSaveTodoList);
+// toDoForm.addEventListener("click",toggleLiChecked,false);
+// editableListName.addEventListener("click",editTodoListName);
 // buttonBackFromLogin.addEventListener("click",backFromLoginClicked);
 
 // logged user data
